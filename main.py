@@ -2,9 +2,12 @@ from tkinter import *
 from functools import partial
 import tkinter as tk, threading
 from PIL import Image, ImageTk
+# import my_video
 
 video_dir = r"video/robot.mp4"
 
+
+# video = my_video.openVideo()
 
 class PlayPauseButton:
     def __init__(self, play_pause, image_button):
@@ -21,18 +24,17 @@ class PlayPauseButton:
             PlayPauseButton("pause", iPause)
         else:
             PlayPauseButton("play", iPlay)
-
-
-def stop_state():
-    print("stoooppp")
+        # my_video.playPause(video)
 
 
 def faster_state():
     print("fassstterrr")
+    # my_video.acceleration(video)
 
 
 def start_state():
     print("go to starrttt")
+    # my_video.goBackToStart(video)
 
 
 if __name__ == "__main__":
