@@ -1,4 +1,4 @@
-*Travail 3 - Tkinter*
+***Travail 3 - Tkinter***
 
 Initier le programme 
 ----------------------------
