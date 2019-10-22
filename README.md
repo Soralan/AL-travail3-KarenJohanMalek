@@ -1,4 +1,4 @@
-Travail 3 - GUI
+**Travail 3 - Tkinter
 
 Initier le programme 
 ----------------------------
