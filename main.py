@@ -1,19 +1,16 @@
+import my_video
 from tkinter import *
 from functools import partial
 import tkinter as tk, threading
 from PIL import Image, ImageTk
-# import my_video
+from tkinter import filedialog
 
-video_dir = r"video/robot.mp4"
-
-
-# video = my_video.openVideo()
 
 class PlayPauseButton:
     def __init__(self, play_pause, image_button):
 
         fr = Frame(app)
-        fr.place(x=20, y=430)
+        fr.place(x=50, y=20)
 
         Button(fr, image=image_button, command=partial(self.change_state, fr, play_pause)).grid(row=2, column=2)
 
@@ -24,24 +21,32 @@ class PlayPauseButton:
             PlayPauseButton("pause", iPause)
         else:
             PlayPauseButton("play", iPlay)
-        # my_video.playPause(video)
+        my_video.playPause(video)
 
 
 def faster_state():
     print("fassstterrr")
-    # my_video.acceleration(video)
+    my_video.acceleration(video)
 
 
+def aFile():
+    app.filename =  filedialog.askopenfilename(initialdir = "/",title = "Select file",filetypes = (("avi files","*.avi"),("all files","*.*")))
+    tmp=app.filename
+    fo = open("foo.txt", "w")
+    fo.write(tmp)
+    fo.close()
+    video = my_video.openVideo()
+	
 def start_state():
     print("go to starrttt")
-    # my_video.goBackToStart(video)
+    my_video.goBackToStart(video)
 
 
 if __name__ == "__main__":
     app = Tk()
 
-    app.title("TardisPlayer")
-    app.geometry('1000x500')
+    app.title("SOPlayer")
+    app.geometry('400x100')
 
     # create button images
     open_iPlay = Image.open("images/play.png")
@@ -56,7 +61,13 @@ if __name__ == "__main__":
 
     # create buttons
     PlayPauseButton("play", iPlay)
-    start_button = Button(app, height=70, image=iStart, command=start_state).place(x=840, y=430)
-    faster_button = Button(app, image=iFaster, command=faster_state).place(x=900, y=430)
+    start_button = Button(app, height=65, image=iStart, command=start_state).place(x=240, y=20)
+    faster_button = Button(app, image=iFaster, command=faster_state).place(x=320, y=20)
+    name_File=Button(app,height=3, text="Choose", command=aFile).place(x=150, y=18)
+    aFile()
+    video = my_video.openVideo()
+	
+	
+	
 
     app.mainloop()
